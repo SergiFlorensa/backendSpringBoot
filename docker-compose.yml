@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: my-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  # Proporciona una contraseña aquí
+      MYSQL_DATABASE: PatioCriolloCarta  # Crea una base de datos inicial
+    ports:
+      - "3307:3306"  # Usando puerto 3307 en la máquina host
+    networks:
+      - my-network
+
+  app:
+    image: my-java-app
+    container_name: my-java-app
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/PatioCriolloCarta
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+
+networks:
+  my-network:
