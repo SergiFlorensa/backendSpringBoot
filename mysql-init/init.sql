@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS PatioCriolloCarta;
 USE PatioCriolloCarta;
 
+
 CREATE TABLE IF NOT EXISTS platos_carta (
     id INT AUTO_INCREMENT PRIMARY KEY,
     categoria VARCHAR(255) NOT NULL,

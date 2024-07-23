@@ -9,13 +9,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "platos_carta") // Asegúrate de que el nombre de la tabla coincida con el de la base de datos
-@Data // Lombok genera getters, setters, equals, hashCode y toString
-@NoArgsConstructor // Constructor sin argumentos para JPA
+@Table(name = "platos_carta") 
+@Data 
+@NoArgsConstructor 
 public class PlatosCarta {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // ID autoincremental
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String categoria;
