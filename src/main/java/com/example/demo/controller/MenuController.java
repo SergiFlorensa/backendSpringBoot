@@ -9,16 +9,15 @@ import com.example.demo.service.MenuService;
 @RestController
 @RequestMapping("/api/platos")
 @CrossOrigin(origins = "*", allowedHeaders = "")
-
 public class MenuController {
 
-	@Autowired
-	private MenuService MenuService;
+    @Autowired
+    private MenuService menuService;
 
-	@GetMapping
-	public List<PlatosCarta> getAllPlatos() {
-		return MenuService.findAll();
-	}
+    @GetMapping
+    public List<PlatosCarta> getAllPlatos() {
+        return menuService.findAll();
+    }
 
-	// Otros métodos del controlador según necesidad
+    // Otros métodos del controlador según necesidad
 }

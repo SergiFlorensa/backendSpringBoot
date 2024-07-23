@@ -1,19 +1,21 @@
-version: '3.8'
-
 services:
   mysql:
     image: mysql:latest
     container_name: my-mysql
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword  # Proporciona una contraseña aquí
-      MYSQL_DATABASE: PatioCriolloCarta  # Crea una base de datos inicial
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: PatioCriolloCarta
     ports:
-      - "3307:3306"  # Usando puerto 3307 en la máquina host
+      - "3307:3306"
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d
     networks:
       - my-network
 
   app:
-    image: my-java-app
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: my-java-app
     depends_on:
       - mysql
@@ -28,3 +30,4 @@ services:
 
 networks:
   my-network:
+    driver: bridge
